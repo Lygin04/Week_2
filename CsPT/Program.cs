@@ -13,22 +13,25 @@ try
 catch(Exception e) { Console.WriteLine(e.Message); }
 
 //  Задание 2
+Department dep1 = new Department("PSU", 21, "You");
+Department dep2 = new Department("Завод", 21, "I");
+
 List<Worker> workers = new List<Worker>()
     {
-        new Worker(){ lastName = "Гарбуз", firstName = "хз", patronymic = "хз", year = 44, department = "3Т" },
-        new Worker(){ lastName = "Пупкин", firstName = "Василий", patronymic = "Нету отчества", year = 34, department = "ХЗ" },
-        new Worker(){ lastName = "Воронин", firstName = "Василий", patronymic = "Николаевич", year = 23, department = "ЗХ" },
-        new Worker(){ lastName = "Пупкин", firstName = "Василий", patronymic = "Нету отчества", year = 34, department = "ХЗ" },
+        new Worker(){ lastName = "Гарбуз", firstName = "хз", patronymic = "хз", year = 44, dep1 },
+        new Worker(){ lastName = "Пупкин", firstName = "Василий", patronymic = "Нету отчества", year = 34, dep2 },
+        new Worker(){ lastName = "Воронин", firstName = "Василий", patronymic = "Николаевич", year = 23, dep2 },
+        new Worker(){ lastName = "Пупкин", firstName = "Василий", patronymic = "Нету отчества", year = 34, dep2 },
 };
 
 SortedDictionary<string, Worker> dict = new SortedDictionary<string, Worker>();
 var dep = from w in workers
-          orderby w.department
+          orderby w.dep
           select w;
 
 foreach (Worker worker in workers)
 {
-    dict[worker.department] = worker;
+    dict[worker.dep.department] = worker;
 }
 
 //  Задание 3
